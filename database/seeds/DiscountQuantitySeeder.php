@@ -43,10 +43,10 @@ class DiscountQuantitySeeder extends Seeder
     		DiscountQuantity::updateOrCreate(
     			[
     				'customer_id' => $data['customer_id'],
-    				'ad_type_id' => $data['ad_type_id']
-    			],
-    			[
-    				'min_quantity' => $data['min_quantity'],
+    				'ad_type_id' => $data['ad_type_id'],
+    				'min_quantity' => $data['min_quantity']
+                ],
+                [
     				'price_per_ad' => $data['price_per_ad']
     			]
     		);

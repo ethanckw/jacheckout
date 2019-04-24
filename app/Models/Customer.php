@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
 	protected $fillable = ['name', 'logo'];
+
+	public function orders()
+	{
+		return $this->hasMany(Order::class);
+	}
 }
