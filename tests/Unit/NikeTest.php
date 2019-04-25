@@ -34,10 +34,13 @@ class NikeTest extends TestCase
             'ad_type_id' => $premiumAd->id
         ]);
 
-        $orderItem = $this->orderService->addItem($order, $premiumAd);
+        $this->orderService->addItem($order, $premiumAd);
+        $orderItem = $order->orderItems->first();
+
         $this->orderItemService->add($orderItem);
         $this->orderItemService->add($orderItem);
         $this->orderItemService->add($orderItem);
+        $order->load('orderItems');
         $this->orderService->getPrices($order);
 
         $this->assertSame(1, count($this->orderItemService->getDiscountQuantities($orderItem)));

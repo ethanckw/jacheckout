@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\AdType;
 use App\Models\Customer;
+use App\Models\DiscountAdditionalItem;
+use App\Models\DiscountQuantity;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Services\CustomerService;
@@ -46,5 +48,17 @@ class OrderController extends Controller
 
         (new OrderItemService)->remove($orderItem);
         return (new OrderService)->getPrices($orderItem->order);
+    }
+
+    public function getAds($customerId)
+    {
+        $discountQty = DiscountQuantity::where('customer_id', $customerId)->get();
+        $discountAdditionalItems = DiscountAdditionalItem::where('customer_id', $customerId)->get();
+        $discounts = $discountQty->concat($discountAdditionalItems);
+
+        return [
+            'ads' => AdType::all(),
+            'discounts' => $discounts
+        ];
     }
 }

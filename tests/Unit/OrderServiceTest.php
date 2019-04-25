@@ -27,9 +27,8 @@ class OrderServiceTest extends TestCase
         $order = factory(Order::class)->create();
         $ad = factory(AdType::class)->create();
 
-        $orderItem = $this->orderService->addItem($order, $ad);
+        $order = $this->orderService->addItem($order, $ad);
 
-        $this->assertInstanceOf(OrderItem::class, $orderItem);
-        $this->assertSame($order->id, $orderItem->order->id);
+        $this->assertSame($order->gross_price, $ad->price);
     }
 }

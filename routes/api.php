@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\AdType;
 use App\Models\Customer;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -38,9 +37,7 @@ Route::get('/customers', function () {
     return Customer::all();
 });
 
-Route::get('/ads', function () {
-    return AdType::all();
-});
+Route::get('/ads/{customerId}', 'OrderController@getAds');
 
 Route::get('/order/{orderId}', function ($orderId) {
     return Order::with(['customer', 'orderItems.adType'])->findOrFail($orderId);

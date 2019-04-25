@@ -34,7 +34,8 @@ class NoDiscountTest extends TestCase
         $this->orderService->addItem($order, $classicAd);
         $this->orderService->addItem($order, $standoutAd);
         $this->orderService->addItem($order, $premiumAd);
-        $this->orderService->getPrices($order);
+        $order->load('orderItems');
+        $order = $this->orderService->getPrices($order);
 
         $this->assertSame($classicAd->price + $standoutAd->price + $premiumAd->price, $order->gross_price);
         $this->assertSame(987.97, $order->net_price);

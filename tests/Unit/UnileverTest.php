@@ -35,11 +35,13 @@ class UnileverTest extends TestCase
             'ad_type_id' => $classicAd->id
         ]);
 
-        $orderItem = $this->orderService->addItem($order, $classicAd);
+        $this->orderService->addItem($order, $classicAd);
+        $orderItem = $order->orderItems->first();
         $this->orderItemService->add($orderItem);
         $this->orderItemService->add($orderItem);
 
         $this->orderService->addItem($order, $premiumAd);
+        $order->load('orderItems');
         $this->orderService->getPrices($order);
 
         $this->assertSame(1, count($this->orderItemService->getDiscountAdditionalItems($orderItem)));

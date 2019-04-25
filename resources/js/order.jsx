@@ -3,9 +3,9 @@ import { Redirect } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import NavHeader from './navheader';
 
 
 class Order extends Component {
@@ -46,27 +46,31 @@ class Order extends Component {
 
   render() {
     return (
-      <Container>
-        {this.state.redirectUrl.length > 0 && <Redirect to={this.state.redirectUrl}/>}
-      <Form className="my-5">
-        {this.state.selectedCustomer}
-        <Form.Row controlId="orderForm.CustomerSelect">
-          <Form.Label as={Col}>Customer</Form.Label>
-          <Col>
-            <Form.Control as="select" onChange={this.selectCustomer} defaultValue={this.state.selectedCustomer}>
-              {this.state.customers.map(customer =>
-                <option key={`customer-${customer.id}`} value={customer.id}>{customer.name}</option>
-               )}
-            </Form.Control>
-          </Col>
-          <Col>
-            <ButtonToolbar>
-              <Button onClick={this.createOrder} variant="success" disabled={this.state.selectedCustomer == 0}>Start</Button>
-              <Button variant="danger">Cancel</Button>
-            </ButtonToolbar>
-          </Col>
-        </Form.Row>
-      </Form>
+      <Container fluid className="px-0">
+        <NavHeader/>
+        <Container>
+          {this.state.redirectUrl.length > 0 && <Redirect to={this.state.redirectUrl}/>}
+          <Form className="my-5">
+            <Form.Group controlId="orderForm.CustomerSelect">
+              <Form.Label>Customer</Form.Label>
+                <Form.Control
+                  size="lg"
+                  as="select"
+                  onChange={this.selectCustomer}
+                  defaultValue={this.state.selectedCustomer}
+                >
+                  {this.state.customers.map(customer =>
+                    <option key={`customer-${customer.id}`} value={customer.id}>{customer.name}</option>
+                  )}
+                </Form.Control>
+                <Form.Row className="my-3">
+                  <Col>
+                    <Button size="lg" onClick={this.createOrder} variant="success" disabled={this.state.selectedCustomer == 0}>Start</Button>
+                  </Col>
+                </Form.Row>
+            </Form.Group>
+          </Form>
+        </Container>
       </Container>
     );
   }

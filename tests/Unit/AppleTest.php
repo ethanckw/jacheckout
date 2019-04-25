@@ -35,11 +35,13 @@ class AppleTest extends TestCase
             'ad_type_id' => $standoutAd->id
         ]);
 
-        $orderItem = $this->orderService->addItem($order, $standoutAd);
+        $this->orderService->addItem($order, $standoutAd);
+        $orderItem = $order->orderItems->first();
         $this->orderItemService->add($orderItem);
         $this->orderItemService->add($orderItem);
 
         $this->orderService->addItem($order, $premiumAd);
+        $order->load('orderItems');
         $this->orderService->getPrices($order);
 
         $this->assertSame(1, count($this->orderItemService->getDiscountQuantities($orderItem)));

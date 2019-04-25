@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\AdType;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Services\OrderItemService;
 
 class OrderService
 {
@@ -17,7 +18,10 @@ class OrderService
     		'quantity' => 1,
     	]);
 
-		$order->orderItems()->save($orderItem);
+
+        $order->orderItems()->save($orderItem);
+        (new OrderItemService)->calculateNetPrice($orderItem);
+
         $order = $this->getPrices($order);
 
     	return $order;
