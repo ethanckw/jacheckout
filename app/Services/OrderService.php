@@ -18,8 +18,9 @@ class OrderService
     	]);
 
 		$order->orderItems()->save($orderItem);
+        $order = $this->getPrices($order);
 
-    	return $orderItem;
+    	return $order;
     }
 
     public function getPrices(Order $order)

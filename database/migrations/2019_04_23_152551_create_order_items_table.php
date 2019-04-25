@@ -22,6 +22,11 @@ class CreateOrderItemsTable extends Migration
             $table->float('net_price')->default(0.0);
             $table->timestamps();
 
+            $table->foreign('order_id')
+                    ->references('id')
+                    ->on('orders')
+                    ->onDelete('cascade');
+
             $table->foreign('ad_type_id')
                     ->references('id')
                     ->on('ad_types')

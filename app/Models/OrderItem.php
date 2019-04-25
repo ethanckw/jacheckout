@@ -12,4 +12,9 @@ class OrderItem extends Model
     {
     	return $this->belongsTo(Order::class);
     }
+
+    public function adType()
+    {
+    	return $this->belongsTo(AdType::class);
+    }
 }

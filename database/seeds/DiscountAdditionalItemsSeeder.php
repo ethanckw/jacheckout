@@ -7,13 +7,13 @@ class DiscountAdditionalItemsSeeder extends Seeder
 {
     const INITIAL_DATA = [
 		[
-			'customer_id' => 1,
+			'customer_id' => 2,
             'ad_type_id' => 1,
             'min_quantity' => 2,
             'offered_quantity' => 3
 		],
 		[
-			'customer_id' => 4,
+			'customer_id' => 5,
             'ad_type_id' => 1,
             'min_quantity' => 4,
             'offered_quantity' => 5

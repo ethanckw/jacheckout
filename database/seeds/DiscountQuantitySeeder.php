@@ -7,25 +7,25 @@ class DiscountQuantitySeeder extends Seeder
 {
     const INITIAL_DATA = [
 		[
-			'customer_id' => 2,
+			'customer_id' => 3,
             'ad_type_id' => 2,
             'min_quantity' => 1,
             'price_per_ad' => 299.99
 		],
 		[
-			'customer_id' => 3,
+			'customer_id' => 4,
             'ad_type_id' => 3,
             'min_quantity' => 4,
             'price_per_ad' => 379.99
 		],
 		[
-			'customer_id' => 4,
+			'customer_id' => 5,
             'ad_type_id' => 2,
             'min_quantity' => 1,
             'price_per_ad' => 309.99
 		],
 		[
-			'customer_id' => 4,
+			'customer_id' => 5,
             'ad_type_id' => 2,
             'min_quantity' => 3,
             'price_per_ad' => 389.99

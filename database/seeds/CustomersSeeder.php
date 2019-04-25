@@ -7,6 +7,10 @@ class CustomersSeeder extends Seeder
 {
 	const INITIAL_DATA = [
 		[
+			'name' => 'Anonymous',
+			'logo' => 'anonymous.jpg'
+		],
+		[
 			'name' => 'Unilever',
 			'logo' => 'unilever.jpg'
 		],
