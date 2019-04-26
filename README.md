@@ -3,9 +3,13 @@ Ad Checkout System. View the demo [here](https://seek.ethanbytes.com)
 
 
 # Setup #
-1. `composer install`
-2. `npm install`
-3. `npm run {dev|prod}`
+1. `composer install`. Install vendor packages.
+2. `cp .env.example .env`. Setup environment.
+3. `php artisan key:generate`. Add an app key for application encryption purposes.
+4. `php artisan migration:install`. Install database migration tables.
+5. `php artisan migrate --seed`. Migrate and initialize database with data.
+6. `npm install`. Setup node modules.
+7. `npm run {dev|prod}`. Generate static stylesheets and javascripts to be served publicly.
 
 
 # How it works #
